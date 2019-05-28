@@ -12,7 +12,7 @@ import com.example.biqunovel.View.promptlibrary.PromptDialog;
  */
 public class PromptDialogUtils {
     private static PromptDialogUtils instance;
-    private  PromptDialog promptDialog;
+    private PromptDialog promptDialog;
 
 
     public PromptDialogUtils() {
@@ -30,16 +30,19 @@ public class PromptDialogUtils {
     }
 
     public void init(Activity activity) {
-        promptDialog = new PromptDialog(activity);
-        promptDialog.getDefaultBuilder().touchAble(true).round(10);
+        if (promptDialog == null) {
+            promptDialog = new PromptDialog(activity);
+            promptDialog.getDefaultBuilder().touchAble(true).round(10);
+        }
     }
 
-    public  void showPromptDialog(String message) {
+    public void showPromptDialog(String message) {
         promptDialog.showLoading(message);
     }
 
-    public  void hidePromptDialog() {
+    public void hidePromptDialog() {
         promptDialog.dismiss();
+
     }
 
 }

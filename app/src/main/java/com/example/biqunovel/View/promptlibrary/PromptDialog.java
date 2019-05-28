@@ -141,7 +141,6 @@ public class PromptDialog {
      * close
      */
     public void dismiss() {
-
         if (isShowing && !outAnimRunning) {
             if (promptView.getBuilder().withAnim && outAnim != null) {
 //                outAnim.setStartOffset(delayTime);

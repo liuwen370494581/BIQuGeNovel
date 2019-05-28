@@ -73,8 +73,7 @@ public class RankLayout extends FrameLayout {
 
     private static class RankAAdapter extends BGARecyclerViewAdapter<IndexModel> {
 
-
-        public RankAAdapter(RecyclerView recyclerView) {
+        private RankAAdapter(RecyclerView recyclerView) {
             super(recyclerView, R.layout.item_rank_a);
         }
 
@@ -87,7 +86,7 @@ public class RankLayout extends FrameLayout {
     private static class RankBAdapter extends BGARecyclerViewAdapter<RankModel> {
 
 
-        public RankBAdapter(RecyclerView recyclerView) {
+        private RankBAdapter(RecyclerView recyclerView) {
             super(recyclerView, R.layout.item_rank_b);
         }
 
