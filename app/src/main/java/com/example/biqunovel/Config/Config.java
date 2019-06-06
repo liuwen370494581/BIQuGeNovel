@@ -50,4 +50,14 @@ public class Config {
     public static final String END_TOTAL = "end_total";
 
 
+    public static final String XUANHUAN = "玄幻奇幻";
+    public static final String WUXIAN = "武侠仙侠";
+    public static final String DOUSHI = "都市言情";
+    public static final String LISHI = "历史军事";
+    public static final String KEHUAN = "科幻灵异";
+    public static final String WANGYOU = "网游竞技";
+    public static final String GIRL = "女生频道";
+    public static final String END = "完本小说";
+
+
 }

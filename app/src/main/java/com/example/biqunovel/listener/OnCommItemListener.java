@@ -15,4 +15,6 @@ public interface OnCommItemListener {
     void onMonthClick();
 
     void onWeekClick();
+
+    void onRetryClick();
 }

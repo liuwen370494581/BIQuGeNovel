@@ -16,16 +16,17 @@
         android:layout_height="match_parent"
         android:background="@color/text_color_99" />
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/id_right_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="5dp"
-        android:visibility="gone">
+        android:visibility="visible">
 
 
         <LinearLayout
+            android:id="@+id/id_line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -36,6 +37,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/btn_rank_bg"
+                android:gravity="center"
+                android:padding="5dp"
                 android:text="总榜"
                 android:textColor="@color/text_color_33"
                 android:textSize="16sp" />
@@ -44,7 +48,10 @@
                 android:id="@+id/id_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_rank_bg"
+                android:gravity="center"
                 android:padding="5dp"
                 android:text="月榜"
                 android:textColor="@color/text_color_33"
@@ -54,7 +61,10 @@
                 android:id="@+id/id_week"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_rank_bg"
+                android:gravity="center"
                 android:padding="5dp"
                 android:text="周榜"
                 android:textColor="@color/text_color_33"
@@ -63,19 +73,32 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/id_line_b"
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_below="@id/id_line"
             android:layout_marginTop="3dp"
-            android:background="@color/text_color_99" />
+            android:background="@color/text_color_99"
+            android:orientation="horizontal" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/id_right_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/id_line_b"
             android:layout_marginTop="5dp">
 
+
         </android.support.v7.widget.RecyclerView>
-    </LinearLayout>
 
-
+        <Button
+            android:id="@+id/id_btn_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/btn_rank_bg"
+            android:text="点击重试"
+            android:textColor="@color/colorPrimary"
+            android:visibility="gone" />
+    </RelativeLayout>
 </LinearLayout>

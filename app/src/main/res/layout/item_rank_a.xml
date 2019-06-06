@@ -2,22 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/btn_rank_bg"
     android:layout_height="wrap_content">
 
 
-    <TextView
-
-        android:id="@+id/id_book_type"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/id_liner_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:ellipsize="middle"
-        android:maxLines="1"
-        android:padding="10dp"
-        android:singleLine="true"
-        android:textColor="@color/text_color_33"
-        android:textSize="16sp"
-        tools:ignore="EllipsizeMaxLines"
-        tools:text="玄幻奇幻排行" />
+        android:layout_marginTop="3dp"
+        android:background="@drawable/btn_rank_bg">
+
+        <TextView
+            android:id="@+id/id_book_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ellipsize="middle"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/text_color_33"
+            android:textSize="16sp"
+            tools:ignore="EllipsizeMaxLines"
+            tools:text="玄幻奇幻排行" />
+
+    </LinearLayout>
+
 </LinearLayout>

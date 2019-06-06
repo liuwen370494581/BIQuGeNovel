@@ -29,17 +29,26 @@ import io.reactivex.schedulers.Schedulers;
 public class DiscoverAction {
 
 
-    public static List<IndexModel> getIndexModel() {
+    public static List<IndexModel> setIndexModel() {
         List<IndexModel> list = new ArrayList<>();
-        list.add(new IndexModel(1, "玄幻奇幻", Config.WUXIA_TOTAL));
-        list.add(new IndexModel(2, "武侠仙侠", Config.WUXIA_TOTAL));
-        list.add(new IndexModel(3, "都市言情", Config.DOUSHI_TOTAL));
-        list.add(new IndexModel(4, "历史军事", Config.LISHI_TOTAL));
-        list.add(new IndexModel(5, "科幻灵异", Config.KEHUAN_TOTAL));
-        list.add(new IndexModel(6, "网游竞技", Config.WANGYOU_TOTAL));
-        list.add(new IndexModel(7, "女生频道", Config.GIRL_TOTAL));
-        list.add(new IndexModel(7, "完本小说", Config.END_TOTAL));
+        list.add(new IndexModel(1, Config.XUANHUAN, Config.WUXIA_TOTAL));
+        list.add(new IndexModel(2, Config.WUXIAN, Config.WUXIA_TOTAL));
+        list.add(new IndexModel(3, Config.DOUSHI, Config.DOUSHI_TOTAL));
+        list.add(new IndexModel(4, Config.LISHI, Config.LISHI_TOTAL));
+        list.add(new IndexModel(5, Config.KEHUAN, Config.KEHUAN_TOTAL));
+        list.add(new IndexModel(6, Config.KEHUAN, Config.WANGYOU_TOTAL));
+        list.add(new IndexModel(7, Config.GIRL, Config.GIRL_TOTAL));
+        list.add(new IndexModel(8, Config.END, Config.END_TOTAL));
         return list;
+    }
+
+    public static IndexModel getIndexModel(int index) {
+        for (IndexModel temIndexModel : setIndexModel()) {
+            if (index == temIndexModel.getIndex()) {
+                return temIndexModel;
+            }
+        }
+        return null;
     }
 
     public static List<RankModel> sortRankDate(List<RankModel> list, String type) {

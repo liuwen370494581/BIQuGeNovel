@@ -43,7 +43,6 @@ public class BookCityFragment extends BaseFragment {
 
     }
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,16 +58,16 @@ public class BookCityFragment extends BaseFragment {
         setListener();
     }
 
-
     private void loadDate() {
         PromptDialogUtils.getInstance().showPromptDialog("加载数据中");
         DiscoverAction.searchRankDate(getActivity(), "https://www.biquge.tw/nweph.html", new ActionCallBack() {
             @Override
             public void ok(Object object) {
                 PromptDialogUtils.getInstance().hidePromptDialog();
-                mRankLayout.setRightVisible();
+                mRankLayout.setRightVisible(true);
                 rankModelList = (List<RankModel>) object;
                 mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.XUANHUAN_TOTAL));
+                mRankLayout.setBtnRetryVisible(false);
 
             }
 
@@ -76,6 +75,7 @@ public class BookCityFragment extends BaseFragment {
             public void failed(Object object) {
                 PromptDialogUtils.getInstance().hidePromptDialog();
                 ToastUtils.showCenterToast(getFragmentContext(), object.toString());
+                mRankLayout.setBtnRetryVisible(true);
             }
         });
     }
@@ -86,24 +86,131 @@ public class BookCityFragment extends BaseFragment {
             public void onItemClick(Object object) {
                 IndexModel temModel = (IndexModel) object;
                 mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, temModel.getBookTypeDes()));
-
+                mRankLayout.setIndexSelect(temModel.getIndex());
+                mRankLayout.clearRankTextBgAndColor();
             }
 
             @Override
             public void onTotalClick() {
+                clickItemRank(1);
 
             }
 
             @Override
             public void onMonthClick() {
+                clickItemRank(2);
 
             }
 
             @Override
             public void onWeekClick() {
+                clickItemRank(3);
+            }
 
+            @Override
+            public void onRetryClick() {
+                loadDate();
             }
         });
+
+    }
+
+    private void clickItemRank(int choose) {
+        int temDex = mRankLayout.getIndexSelect();
+        IndexModel indexModel = DiscoverAction.getIndexModel(temDex);
+        switch (choose) {
+            case 1:
+                //总榜
+                switch (indexModel.getBookType()) {
+                    case Config.XUANHUAN:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.XUANHUAN_TOTAL));
+                        break;
+                    case Config.WUXIAN:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.WUXIA_TOTAL));
+                        break;
+                    case Config.DOUSHI:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.DOUSHI_TOTAL));
+                        break;
+                    case Config.LISHI:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.LISHI_TOTAL));
+                        break;
+                    case Config.KEHUAN:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.KEHUAN_TOTAL));
+                        break;
+                    case Config.WANGYOU:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.WANGYOU_TOTAL));
+                        break;
+                    case Config.GIRL:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.GIRL_TOTAL));
+                        break;
+                    case Config.END:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.END_TOTAL));
+                        break;
+
+                }
+                break;
+
+            case 2:
+                //月榜
+                switch (indexModel.getBookType()) {
+                    case Config.XUANHUAN:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.XUANHUAN_MONTH));
+                        break;
+                    case Config.WUXIAN:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.WUXIA_MONTH));
+                        break;
+                    case Config.DOUSHI:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.DOUSHI_MONTH));
+                        break;
+                    case Config.LISHI:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.LISHI_MONTH));
+                        break;
+                    case Config.KEHUAN:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.KEHUAN_MONTH));
+                        break;
+                    case Config.WANGYOU:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.WANGYOU_MONTH));
+                        break;
+                    case Config.GIRL:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.GIRL_MONTH));
+                        break;
+                    case Config.END:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.END_MONTH));
+                        break;
+
+                }
+                break;
+
+            case 3:
+                //周榜
+                switch (indexModel.getBookType()) {
+                    case Config.XUANHUAN:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.XUANHUAN_WEEK));
+                        break;
+                    case Config.WUXIAN:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.WUXIA_WEEK));
+                        break;
+                    case Config.DOUSHI:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.DOUSHI_WEEK));
+                        break;
+                    case Config.LISHI:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.LISHI_WEEK));
+                        break;
+                    case Config.KEHUAN:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.KEHUAN_WEEK));
+                        break;
+                    case Config.WANGYOU:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.WANGYOU_WEEK));
+                        break;
+                    case Config.GIRL:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.GIRL_WEEK));
+                        break;
+                    case Config.END:
+                        mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.END_WEEK));
+                        break;
+                }
+                break;
+        }
 
     }
 
