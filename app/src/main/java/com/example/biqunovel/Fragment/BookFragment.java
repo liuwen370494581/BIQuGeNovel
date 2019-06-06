@@ -52,20 +52,7 @@ public class BookFragment extends BaseFragment {
 
     private void loadDate() {
         PromptDialogUtils.getInstance().showPromptDialog("加载数据中");
-        DiscoverAction.searchCoverData(getActivity(), "https://www.biquge.tw/nweph.html", new ActionCallBack() {
-            @Override
-            public void ok(Object object) {
-                PromptDialogUtils.getInstance().hidePromptDialog();
 
-
-            }
-
-            @Override
-            public void failed(Object object) {
-                PromptDialogUtils.getInstance().hidePromptDialog();
-                ToastUtils.showCenterToast(getFragmentContext(), object.toString());
-            }
-        });
     }
 
 

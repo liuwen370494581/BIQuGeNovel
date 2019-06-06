@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/btn_rank_bg"
     android:layout_height="wrap_content">
 
 
     <TextView
+
         android:id="@+id/id_book_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

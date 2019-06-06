@@ -11,13 +11,17 @@ import android.widget.TextView;
 
 import com.example.biqunovel.Action.DiscoverAction;
 import com.example.biqunovel.Base.BaseFragment;
+import com.example.biqunovel.Config.Config;
+import com.example.biqunovel.Model.IndexModel;
 import com.example.biqunovel.Model.RankModel;
 import com.example.biqunovel.R;
 import com.example.biqunovel.Utils.PromptDialogUtils;
 import com.example.biqunovel.Utils.ToastUtils;
 import com.example.biqunovel.View.RankLayout;
 import com.example.biqunovel.listener.ActionCallBack;
+import com.example.biqunovel.listener.OnCommItemListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -32,6 +36,7 @@ public class BookCityFragment extends BaseFragment {
 
 
     private RankLayout mRankLayout;
+    private List<RankModel> rankModelList = new ArrayList<>();
 
     @Override
     public void initData() {
@@ -51,16 +56,19 @@ public class BookCityFragment extends BaseFragment {
         ((TextView) view.findViewById(R.id.title)).setText("排行榜");
         mRankLayout = (RankLayout) view.findViewById(R.id.id_rank_layout);
         loadDate();
+        setListener();
     }
+
 
     private void loadDate() {
         PromptDialogUtils.getInstance().showPromptDialog("加载数据中");
-        DiscoverAction.searchCoverData(getActivity(), "https://www.biquge.tw/nweph.html", new ActionCallBack() {
+        DiscoverAction.searchRankDate(getActivity(), "https://www.biquge.tw/nweph.html", new ActionCallBack() {
             @Override
             public void ok(Object object) {
                 PromptDialogUtils.getInstance().hidePromptDialog();
-                List<RankModel> temList = (List<RankModel>) object;
-                mRankLayout.updateRankDate(temList);
+                mRankLayout.setRightVisible();
+                rankModelList = (List<RankModel>) object;
+                mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.XUANHUAN_TOTAL));
 
             }
 
@@ -70,6 +78,33 @@ public class BookCityFragment extends BaseFragment {
                 ToastUtils.showCenterToast(getFragmentContext(), object.toString());
             }
         });
+    }
+
+    private void setListener() {
+        mRankLayout.setListener(new OnCommItemListener() {
+            @Override
+            public void onItemClick(Object object) {
+                IndexModel temModel = (IndexModel) object;
+                mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, temModel.getBookTypeDes()));
+
+            }
+
+            @Override
+            public void onTotalClick() {
+
+            }
+
+            @Override
+            public void onMonthClick() {
+
+            }
+
+            @Override
+            public void onWeekClick() {
+
+            }
+        });
+
     }
 
 

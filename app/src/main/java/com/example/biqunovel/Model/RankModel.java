@@ -16,13 +16,20 @@ public class RankModel implements Serializable {
     private String bookUrl;
     private String bookImgUrl;
     private String bookDate;
+    private String type;
 
-    public RankModel(String bookRankNum, String bookName, String bookUrl, String bookImgUrl, String bookDate) {
+
+
+
+
+    public RankModel(long id, String bookRankNum, String bookName, String bookUrl, String bookImgUrl, String bookDate, String type) {
+        this.id = id;
         this.bookRankNum = bookRankNum;
         this.bookName = bookName;
         this.bookUrl = bookUrl;
         this.bookImgUrl = bookImgUrl;
         this.bookDate = bookDate;
+        this.type = type;
     }
 
     public String getBookRankNum() {
@@ -74,5 +81,13 @@ public class RankModel implements Serializable {
 
     public void setBookImgUrl(String bookImgUrl) {
         this.bookImgUrl = bookImgUrl;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

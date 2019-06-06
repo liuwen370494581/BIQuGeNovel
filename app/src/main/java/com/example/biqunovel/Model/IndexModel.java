@@ -10,8 +10,9 @@ import java.io.Serializable;
  */
 public class IndexModel implements Serializable {
 
-    private  int index;
+    private int index;
     private String bookType;
+    private String bookTypeDes;
 
     public IndexModel() {
     }
@@ -19,6 +20,20 @@ public class IndexModel implements Serializable {
     public IndexModel(int index, String bookType) {
         this.index = index;
         this.bookType = bookType;
+    }
+
+    public IndexModel(int index, String bookType, String bookTypeDes) {
+        this.index = index;
+        this.bookType = bookType;
+        this.bookTypeDes = bookTypeDes;
+    }
+
+    public String getBookTypeDes() {
+        return bookTypeDes;
+    }
+
+    public void setBookTypeDes(String bookTypeDes) {
+        this.bookTypeDes = bookTypeDes;
     }
 
     public int getIndex() {
