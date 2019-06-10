@@ -46,12 +46,28 @@ public class BookFragment extends BaseFragment {
     }
 
     private void initView(View view) {
+        btn = view.findViewById(R.id.id_btn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DiscoverAction.searchMainData(getFragmentContext(), "https://www.biquge.tw", new ActionCallBack() {
+                    @Override
+                    public void ok(Object object) {
 
+                    }
+
+                    @Override
+                    public void failed(Object object) {
+
+                    }
+                });
+            }
+        });
 
     }
 
     private void loadDate() {
-        PromptDialogUtils.getInstance().showPromptDialog("加载数据中");
+
 
     }
 

@@ -12,4 +12,16 @@
         <item>发现</item>
         <item>个人</item>
     </string-array>
+
+
+    <string-array name="tab_titles">
+        <item>玄幻奇幻</item>
+        <item>武侠仙侠</item>
+        <item>都市言情</item>
+        <item>历史军事</item>
+        <item>科幻灵异</item>
+        <item>网游竞技</item>
+        <item>女频频道</item>
+        <item>完本小说</item>
+    </string-array>
 </resources>
