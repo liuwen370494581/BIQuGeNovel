@@ -89,7 +89,14 @@ public class RankLayout extends FrameLayout {
         mAdapterA.setOnRVItemClickListener(new BGAOnRVItemClickListener() {
             @Override
             public void onRVItemClick(ViewGroup parent, View itemView, int position) {
-                mListener.onItemClick(mAdapterA.getData().get(position));
+                mListener.onItemAClick(mAdapterA.getData().get(position));
+            }
+        });
+
+        mAdapterB.setOnRVItemClickListener(new BGAOnRVItemClickListener() {
+            @Override
+            public void onRVItemClick(ViewGroup parent, View itemView, int position) {
+                mListener.onItemBClick(mAdapterB.getData().get(position));
             }
         });
 

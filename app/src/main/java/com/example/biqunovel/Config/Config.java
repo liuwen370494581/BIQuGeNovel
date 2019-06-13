@@ -10,6 +10,8 @@ public class Config {
 
     public static final String BIQuUrl = "https://www.biquge.tw/";//笔趣阁url;
 
+    public static final String B_TYPE_URL = "https://www.biquge.tw/newclass/%s/1.html";//笔趣阁类型url;
+
 
     public static final String XUANHUAN_WEEK = "xuanhuan_week";
     public static final String XUANHUAN_MONTH = "xuanhuan_month";

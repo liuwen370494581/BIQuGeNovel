@@ -12,11 +12,13 @@ public class BookModel implements Serializable {
 
 
     private long id;
-    private String  bookUrl;
+    private String bookUrl;
     private String bookImg;
     private String bookAuthor;
     private String bookName;
     private String booKDesc;
+    private String bookType;
+    private String bookNewChaptersUrl;
 
     public BookModel() {
     }
@@ -27,6 +29,22 @@ public class BookModel implements Serializable {
         this.bookImg = bookImg;
         this.bookAuthor = bookAuthor;
         this.bookName = bookName;
+    }
+
+    public String getBookType() {
+        return bookType;
+    }
+
+    public String getBookNewChapters() {
+        return bookNewChaptersUrl;
+    }
+
+    public void setBookNewChapters(String bookNewChapters) {
+        this.bookNewChaptersUrl = bookNewChapters;
+    }
+
+    public void setBookType(String bookType) {
+        this.bookType = bookType;
     }
 
     public String getBooKDesc() {

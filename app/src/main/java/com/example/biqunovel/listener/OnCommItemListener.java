@@ -8,7 +8,9 @@ package com.example.biqunovel.listener;
  */
 public interface OnCommItemListener {
 
-    void onItemClick(Object object);
+    void onItemAClick(Object object);
+
+    void onItemBClick(Object object);
 
     void onTotalClick();
 
@@ -17,4 +19,6 @@ public interface OnCommItemListener {
     void onWeekClick();
 
     void onRetryClick();
+
+
 }

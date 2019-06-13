@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import com.example.biqunovel.Action.DiscoverAction;
 import com.example.biqunovel.Base.BaseFragment;
+import com.example.biqunovel.Config.Config;
 import com.example.biqunovel.EventBus.BindEventBus;
 import com.example.biqunovel.Model.RankModel;
 import com.example.biqunovel.R;
@@ -50,7 +51,7 @@ public class BookFragment extends BaseFragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DiscoverAction.searchMainData(getFragmentContext(), "https://www.biquge.tw", new ActionCallBack() {
+                DiscoverAction.searchMainNewList(getFragmentContext(), String.format(Config.B_TYPE_URL, "1"), new ActionCallBack() {
                     @Override
                     public void ok(Object object) {
 

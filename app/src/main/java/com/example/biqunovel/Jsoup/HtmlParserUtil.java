@@ -140,4 +140,32 @@ public class HtmlParserUtil {
         }
         return list;
     }
+
+    /**
+     * 获取各种书籍类型更新列表
+     *
+     * @param url
+     * @return
+     */
+    public static List<BookModel> getMainNewList(String url) {
+        List<BookModel> list = new ArrayList<>();
+        try {
+            Document document = Jsoup.connect(url)
+                    .userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31").timeout(40000).get();
+            Elements elements = document.select("span.s1");
+            for (Element element : elements) {
+                BookModel model = new BookModel();
+                model.setBookType(element.text());
+                model.setBookUrl(Config.BIQuUrl + element.select("a").attr("href"));
+                model.setBookImg(Config.BIQuUrl + element.select("a").select("img").attr("src"));
+                model.setBookName(element.select("a").select("img").attr("alt"));
+                model.setBookAuthor(element.select("dl").select("span").text());
+                model.setBooKDesc(element.select("dl").select("dd").text());
+                list.add(model);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

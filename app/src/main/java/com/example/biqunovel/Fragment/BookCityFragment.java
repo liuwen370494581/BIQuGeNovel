@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.biqunovel.Action.DiscoverAction;
 import com.example.biqunovel.Base.BaseFragment;
 import com.example.biqunovel.Config.Config;
+import com.example.biqunovel.Model.BookModel;
 import com.example.biqunovel.Model.IndexModel;
 import com.example.biqunovel.Model.RankModel;
 import com.example.biqunovel.R;
@@ -83,11 +84,17 @@ public class BookCityFragment extends BaseFragment {
     private void setListener() {
         mRankLayout.setListener(new OnCommItemListener() {
             @Override
-            public void onItemClick(Object object) {
+            public void onItemAClick(Object object) {
                 IndexModel temModel = (IndexModel) object;
                 mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, temModel.getBookTypeDes()));
                 mRankLayout.setIndexSelect(temModel.getIndex());
                 mRankLayout.clearRankTextBgAndColor();
+            }
+
+            @Override
+            public void onItemBClick(Object object) {
+                RankModel rankModel = (RankModel) object;
+                ToastUtils.showCenterToast(getFragmentContext(), rankModel.getBookName());
             }
 
             @Override
