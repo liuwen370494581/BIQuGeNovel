@@ -116,4 +116,22 @@ public class DiscoverAction {
             }
         });
     }
+
+    public static void searchMainRankList(final Context context, final String url, final ActionCallBack callBack) {
+        Observable.create(new ObservableOnSubscribe<List<BookModel>>() {
+            @Override
+            public void subscribe(ObservableEmitter<List<BookModel>> e) throws Exception {
+                e.onNext(HtmlParserUtil.getMainRankList(url));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<BookModel>>() {
+            @Override
+            public void accept(@NonNull List<BookModel> models) throws Exception {
+                if (models != null && models.size() != 0) {
+                    callBack.ok(models);
+                } else {
+                    callBack.failed("没有数据");
+                }
+            }
+        });
+    }
 }

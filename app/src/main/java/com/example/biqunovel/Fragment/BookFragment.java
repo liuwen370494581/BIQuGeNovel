@@ -51,7 +51,7 @@ public class BookFragment extends BaseFragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DiscoverAction.searchMainNewList(getFragmentContext(), String.format(Config.B_TYPE_URL, "1"), new ActionCallBack() {
+                DiscoverAction.searchMainRankList(getFragmentContext(), String.format(Config.B_TYPE_URL, "1"), new ActionCallBack() {
                     @Override
                     public void ok(Object object) {
 

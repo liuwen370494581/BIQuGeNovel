@@ -11,6 +11,9 @@ import java.io.Serializable;
 public class BookModel implements Serializable {
 
 
+    public static final String TYPE_ONE = "TYPE_ONE";
+    public static final String TYPE_TWO = "TYPE_TWO";
+
     private long id;
     private String bookUrl;
     private String bookImg;
@@ -19,6 +22,9 @@ public class BookModel implements Serializable {
     private String booKDesc;
     private String bookType;
     private String bookNewChaptersUrl;
+    private String bookNewChapters;
+    private String bookUpdateDate;
+    private String type;
 
     public BookModel() {
     }
@@ -31,15 +37,39 @@ public class BookModel implements Serializable {
         this.bookName = bookName;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getBookUpdateDate() {
+        return bookUpdateDate;
+    }
+
+    public void setBookUpdateDate(String bookUpdateDate) {
+        this.bookUpdateDate = bookUpdateDate;
+    }
+
+    public String getBookNewChapters() {
+        return bookNewChapters;
+    }
+
+    public void setBookNewChapters(String bookNewChapters) {
+        this.bookNewChapters = bookNewChapters;
+    }
+
     public String getBookType() {
         return bookType;
     }
 
-    public String getBookNewChapters() {
+    public String getBookNewChaptersUrl() {
         return bookNewChaptersUrl;
     }
 
-    public void setBookNewChapters(String bookNewChapters) {
+    public void setBookNewChaptersUrl(String bookNewChapters) {
         this.bookNewChaptersUrl = bookNewChapters;
     }
 

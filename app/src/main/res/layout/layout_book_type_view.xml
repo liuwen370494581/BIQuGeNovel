@@ -6,11 +6,11 @@
     android:layout_height="match_parent">
 
 
-    <com.example.biqunovel.View.BookTypeView
-        android:id="@+id/id_book_type_view"
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/layout_book_type_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-
-    </com.example.biqunovel.View.BookTypeView>
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/btn_rank_bg"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <com.example.biqunovel.View.CircleImageView
+            android:id="@+id/id_book_cover"
+            android:layout_width="72dp"
+            android:layout_height="96dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_default_cover"
+            app:cor_shape="round"
+            app:radius="3dp" />
+
+        <TextView
+            android:id="@+id/id_book_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/id_book_cover"
+            android:layout_centerHorizontal="true"
+            android:text="我吃西红柿"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/id_book_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/id_book_author"
+            android:layout_centerHorizontal="true"
+            android:text="喜欢你没道理"
+            android:textSize="10sp" />
+    </RelativeLayout>
+</RelativeLayout>

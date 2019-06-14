@@ -60,11 +60,9 @@ public class BookCityFragment extends BaseFragment {
     }
 
     private void loadDate() {
-        PromptDialogUtils.getInstance().showPromptDialog("加载数据中");
         DiscoverAction.searchRankDate(getActivity(), "https://www.biquge.tw/nweph.html", new ActionCallBack() {
             @Override
             public void ok(Object object) {
-                PromptDialogUtils.getInstance().hidePromptDialog();
                 mRankLayout.setRightVisible(true);
                 rankModelList = (List<RankModel>) object;
                 mRankLayout.updateRankDate(DiscoverAction.sortRankDate(rankModelList, Config.XUANHUAN_TOTAL));

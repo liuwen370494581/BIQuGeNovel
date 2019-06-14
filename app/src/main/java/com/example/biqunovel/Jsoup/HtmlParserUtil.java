@@ -128,8 +128,8 @@ public class HtmlParserUtil {
             Elements elements = document.select("div.item");
             for (Element element : elements) {
                 BookModel model = new BookModel();
-                model.setBookUrl(url + element.select("a").attr("href"));
-                model.setBookImg(url + element.select("a").select("img").attr("src"));
+                model.setBookUrl(Config.BIQuUrl + element.select("a").attr("href"));
+                model.setBookImg(Config.BIQuUrl + element.select("a").select("img").attr("src"));
                 model.setBookName(element.select("a").select("img").attr("alt"));
                 model.setBookAuthor(element.select("dl").select("span").text());
                 model.setBooKDesc(element.select("dl").select("dd").text());
@@ -152,15 +152,45 @@ public class HtmlParserUtil {
         try {
             Document document = Jsoup.connect(url)
                     .userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31").timeout(40000).get();
-            Elements elements = document.select("span.s1");
+            Elements elements = document.select("div.l").select("li");
             for (Element element : elements) {
                 BookModel model = new BookModel();
-                model.setBookType(element.text());
-                model.setBookUrl(Config.BIQuUrl + element.select("a").attr("href"));
-                model.setBookImg(Config.BIQuUrl + element.select("a").select("img").attr("src"));
-                model.setBookName(element.select("a").select("img").attr("alt"));
-                model.setBookAuthor(element.select("dl").select("span").text());
-                model.setBooKDesc(element.select("dl").select("dd").text());
+                model.setBookType(element.select("span.s1").text());
+                model.setBookUrl(Config.BIQuUrl + element.select("span.s2").select("a").attr("href"));
+                //model.setBookImg(Config.BIQuUrl + element.select("a").select("img").attr("src"));
+                model.setBookName(element.select("span.s2").select("a").text());
+
+                model.setBookNewChaptersUrl(Config.BIQuUrl + element.select("span.s3").select("a").attr("href"));
+                model.setBookNewChapters(element.select("span.s3").select("a").text());
+                model.setBookAuthor(element.select("span.s4").text());
+                model.setBookUpdateDate(element.select("span.s5").text());
+                list.add(model);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    /**
+     * 获取点击最高的数据
+     *
+     * @param url
+     * @return
+     */
+    public static List<BookModel> getMainRankList(String url) {
+        List<BookModel> list = new ArrayList<>();
+        try {
+            Document document = Jsoup.connect(url)
+                    .userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31").timeout(40000).get();
+            Elements elements = document.select("div.r").select("li");
+            for (Element element : elements) {
+                BookModel model = new BookModel();
+                model.setBookType(element.select("span.s1").text());
+                model.setBookUrl(Config.BIQuUrl + element.select("span.s2").select("a").attr("href"));
+                //model.setBookImg(Config.BIQuUrl + element.select("a").select("img").attr("src"));
+                model.setBookName(element.select("span.s2").select("a").text());
+                model.setBookAuthor(element.select("span.s5").text());
                 list.add(model);
             }
         } catch (Exception e) {
