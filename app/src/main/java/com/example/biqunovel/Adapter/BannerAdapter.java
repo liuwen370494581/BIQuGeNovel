@@ -9,6 +9,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
+import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +43,7 @@ public class BannerAdapter extends PagerAdapter {
 
     public void updateList(List<BookModel> list) {
         if (list.size() != 0) {
-            mList = list;
+               mList = list;
             notifyDataSetChanged();
         }
     }
@@ -54,17 +55,17 @@ public class BannerAdapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
+    public boolean isViewFromObject(@NonNull View view, Object object) {
         return view == object;
     }
 
     @Override
-    public void destroyItem(ViewGroup view, int position, Object object) {
+    public void destroyItem(@NonNull ViewGroup view, int position, @NonNull Object object) {
         view.removeView((View) object);
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, final int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
         View view = LayoutInflater.from(mActivity.getApplicationContext()).inflate(R.layout.recommend_page_item, container, false);
         if (mList.size() != 0) {
             BookModel model = mList.get(position);

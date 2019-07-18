@@ -61,5 +61,4 @@ public class Config {
     public static final String GIRL = "女生频道";
     public static final String END = "完本小说";
 
-
 }

@@ -10,10 +10,6 @@ import java.io.Serializable;
  */
 public class BookModel implements Serializable {
 
-
-    public static final String TYPE_ONE = "TYPE_ONE";
-    public static final String TYPE_TWO = "TYPE_TWO";
-
     private long id;
     private String bookUrl;
     private String bookImg;
